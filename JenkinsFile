@@ -1,0 +1,26 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Fetch code') {
+            steps {
+                checkout scm
+                echo 'Code fetched successfully'
+            }
+        }
+
+        stage('Static Analysis') {
+            steps {
+                echo 'Running static analysis'
+                sh 'git status --short'
+            }
+        }
+
+        stage('Containerise') {
+            steps {
+                echo 'Preparing container image'
+            }
+        }
+    }
+}
